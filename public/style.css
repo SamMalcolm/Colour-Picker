@@ -53,6 +53,13 @@ body {
     box-shadow: 3px 5px 9px -4px rgba(0, 0, 0, 0.42);
 }
 
+div.average_colour {
+    margin-top: 10px;
+    padding: 10px;
+    border-radius: 3px;
+    border: 2px solid rgba(0, 0, 0, 0.5)
+}
+
 input {
     width: 100%;
     margin-bottom: 20px;

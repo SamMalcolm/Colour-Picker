@@ -12,7 +12,7 @@ const Colour = (props) => {
 			<button className="removeColour" style={
 				{
 					'color': ((props.red * 0.299 + props.green * 0.587 + props.blue * 0.114) > 186) ? 'black' : 'white',
-					'border-color': ((props.red * 0.299 + props.green * 0.587 + props.blue * 0.114) > 186) ? 'black' : 'white'
+					'borderColor': ((props.red * 0.299 + props.green * 0.587 + props.blue * 0.114) > 186) ? 'black' : 'white'
 				}} onClick={props.removeColour}>X</button>
 			<div className="text_content">
 				<h2>{props.name}</h2>

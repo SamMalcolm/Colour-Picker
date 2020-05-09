@@ -16,19 +16,19 @@ const ColourForm = (props) => {
 					'color': ((red * 0.299 + green * 0.587 + blue * 0.114) > 186) ? 'black' : 'white'
 				}}>
 				{props.children}
-				<label for="red">
+				<label htmlFor="red">
 					<span style={{ 'color': 'red' }}>Red:</span> {red}
 				</label><br />
 				<input name="red" type="range" defaultValue="128" max="255" min="0" onChange={(e) => { setRed(e.target.value) }} /><br />
-				<label for="green">
+				<label htmlFor="green">
 					<span style={{ 'color': 'green' }}>Green:</span> {green}
 				</label><br />
 				<input name="green" type="range" defaultValue="128" max="255" min="0" onChange={(e) => { setGreen(e.target.value) }} /><br />
-				<label for="blue">
+				<label htmlFor="blue">
 					<span style={{ 'color': 'deepskyblue' }}>Blue:</span> {blue}
 				</label><br />
 				<input name="blue" type="range" defaultValue="128" max="255" min="0" onChange={(e) => { setBlue(e.target.value) }} /><br />
-				<label for="name">Name:</label><br />
+				<label htmlFor="name">Name:</label><br />
 				<input type="text" defaultValue={name} onChange={(e) => { setName(e.target.value) }} /><br />
 				<button className="addColour" onClick={() => { props.addColour({ 'red': red, 'green': green, 'blue': blue, 'name': name }) }} >Add Colour</button>
 			</div>
