@@ -1,15 +1,32 @@
-import React, { useState } from 'react';
+import React, { useState, useReducer } from 'react';
 import ReactDOM from 'react-dom';
 
 import Colour from './components/Colour.jsx';
+import ColourForm from './components/ColourForm.jsx';
+
+const reducer = (state, action) => {
+	switch (action.type) {
+		case 'removeColour':
+			let stateCopy = state.map((c) => (c));
+			stateCopy.splice(stateCopy.indexOf(action.colour), 1);
+			return stateCopy;
+		case 'addColour':
+			return [...state, action.colour];
+	}
+}
 
 const App = () => {
-	const [colours, setColours] = useState([])
+
+	const [state, dispatch] = useReducer(reducer, []);
+
 	return (
 		<div className="container">
-			<h1>Top Level Component</h1>
-			<Colour red={123} green={200} blue={60} />
-			<Colour red={200} green={120} blue={20} />
+			<ColourForm addColour={(colour) => { dispatch({ 'type': 'addColour', 'colour': colour }) }} />
+			{state.map((colour) => {
+				return (
+					<Colour removeColour={() => { dispatch({ 'type': 'removeColour', 'colour': colour }) }} {...colour} />
+				)
+			})}
 		</div>
 	);
 }
