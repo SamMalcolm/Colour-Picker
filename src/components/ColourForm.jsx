@@ -5,7 +5,6 @@ const ColourForm = (props) => {
 	const [red, setRed] = useState(128);
 	const [green, setGreen] = useState(128);
 	const [blue, setBlue] = useState(128);
-
 	const [name, setName] = useState('Colour!');
 
 	return (
@@ -32,7 +31,6 @@ const ColourForm = (props) => {
 				<input type="text" defaultValue={name} onChange={(e) => { setName(e.target.value) }} /><br />
 				<button className="addColour" onClick={() => { props.addColour({ 'red': red, 'green': green, 'blue': blue, 'name': name }) }} >Add Colour</button>
 			</div>
-
 		</div >
 	)
 }
