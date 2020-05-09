@@ -1,5 +1,10 @@
 import React, { useState, useReducer, useEffect } from 'react';
 import ReactDOM from 'react-dom';
+
+import Colour from './components/Colour.jsx';
+import ColourForm from './components/ColourForm.jsx';
+import About from './components/About.jsx';
+
 import {
 	HashRouter as Router,
 	Switch,
@@ -7,9 +12,6 @@ import {
 	Link
 } from "react-router-dom";
 
-import Colour from './components/Colour.jsx';
-import ColourForm from './components/ColourForm.jsx';
-import About from './components/About.jsx';
 
 const themes = {
 	light: {

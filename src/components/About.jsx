@@ -1,7 +1,6 @@
 import React, { useContext } from 'react'
 import { Link } from 'react-router-dom';
-
-export const About = (props) => {
+const About = (props) => {
 
 	const theme = useContext(props.theme_context);
 
@@ -21,3 +20,5 @@ export const About = (props) => {
 		</div >
 	)
 }
+
+export default About;
