@@ -1,12 +1,12 @@
-import React, { useContext } from 'react'
+import React from 'react'
 import { Link } from 'react-router-dom';
 
-export const About = (props) => {
+export const About = () => {
 
-	const theme = useContext(props.theme_context);
+	// const theme = useContext(ThemeContext);
 
 	return (
-		<div className="container" style={{ 'backgroundColor': theme.background, 'color': theme.foreground }}>
+		<div className="container">  {/* style={{ 'backgroundColor': theme.background, 'color': theme.foreground }} */}
 			<h1>About the Colour Picker!</h1>
 			<Link to="/">See the Colour Picker!</Link>
 			<p>Colour picker is a small react project that is created by Sam Malcolm and used in his course <i>Getting Started With React.</i></p>
@@ -18,6 +18,6 @@ export const About = (props) => {
 				<li>Using the React Router.</li>
 			</ul>
 			<p>View the project on GitHub: <a href="https://github.com/SamMalcolm/Colour-Picker/">https://github.com/SamMalcolm/Colour-Picker/</a></p>
-		</div >
+		</div>
 	)
 }
