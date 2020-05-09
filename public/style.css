@@ -7,6 +7,15 @@ body {
     margin: 0;
 }
 
+div.container_bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    min-height: 100%;
+    z-index: -2;
+}
+
 .colour_live {
     padding: 40px;
     width: calc(100% - 80px);

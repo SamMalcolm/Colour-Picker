@@ -24,4 +24,4 @@ const Colour = (props) => {
 	)
 }
 
-export default Colour
+export default Colour;

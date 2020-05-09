@@ -35,4 +35,4 @@ const ColourForm = (props) => {
 	)
 }
 
-export default ColourForm
+export default ColourForm;

@@ -39,6 +39,7 @@ const App = () => {
 
 	const [state, dispatch] = useReducer(reducer, []);
 	const [average, setAverage] = useState({ 'red': 128, 'green': 128, 'blue': 128, 'name': 'Average Colour' });
+	const [theme, setTheme] = useState(themes.dark);
 
 	useEffect(() => {
 		let stateCopy = state.map((c) => (c));
@@ -59,14 +60,27 @@ const App = () => {
 	}, [state])
 
 	return (
-		<ThemeContext.Provider value={themes.dark}>
+		<ThemeContext.Provider value={theme}>
 			<Router>
 				<Switch>
-
 					<Route exact path="/">
-						<div>
+						<div className="container_bg" style={{ 'backgroundColor': theme.background, 'color': theme.foreground }}>
+
 							<ColourForm addColour={(colour) => { dispatch({ 'type': 'addColour', 'colour': colour }) }}>
 								<h1>Colour Picker!</h1>
+								<label htmlFor="theme">Theme:</label>
+								<br />
+								<br />
+								<select value={(theme == themes.dark) ? "dark" : "light"} onChange={(e) => {
+									if (e.target.value == "dark") {
+										setTheme(themes.dark)
+									} else {
+										setTheme(themes.light)
+									}
+								}}>
+									<option value="dark">Dark Theme</option>
+									<option value="light">Light Theme</option>
+								</select>
 								<p>Choose a Colour, add it to the list, remove it if you like. Just have fun!</p>
 								<Link to="/about">About this project</Link>
 								<br />
@@ -96,17 +110,18 @@ const App = () => {
 									)
 								})}
 							</div>
+
 						</div>
 					</Route>
 					<Route exact path="/about">
-
-						<About theme_context={ThemeContext} />
-
+						<About />
 					</Route>
 				</Switch>
 			</Router>
-		</ThemeContext.Provider>
+		</ThemeContext.Provider >
 	);
 }
+
+export { ThemeContext, App }
 
 ReactDOM.render(<App />, document.querySelector(".react_container"));
