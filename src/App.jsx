@@ -11,7 +11,7 @@ const reducer = (state, action) => {
 			stateCopy.splice(stateCopy.indexOf(action.colour), 1);
 			return stateCopy;
 		case 'addColour':
-			return [...state, action.colour];
+			return [action.colour, ...state];
 	}
 }
 
@@ -20,15 +20,32 @@ const App = () => {
 	const [state, dispatch] = useReducer(reducer, []);
 
 	return (
-		<div className="container">
-			<ColourForm addColour={(colour) => { dispatch({ 'type': 'addColour', 'colour': colour }) }} />
-			{state.map((colour) => {
-				return (
-					<Colour removeColour={() => { dispatch({ 'type': 'removeColour', 'colour': colour }) }} {...colour} />
-				)
-			})}
+		<div>
+			<ColourForm addColour={(colour) => { dispatch({ 'type': 'addColour', 'colour': colour }) }}>
+				<h1>Colour Picker!</h1>
+				<p>Choose a Colour, add it to the list, remove it if you like. Just have fun!</p>
+			</ColourForm>
+			<div className="container">
+				{state.map((colour) => {
+					return (
+						<Colour
+							key={
+								colour.red.toString() +
+								colour.blue.toString() +
+								colour.green.toString()
+							}
+							removeColour={
+								() => {
+									dispatch({ 'type': 'removeColour', 'colour': colour })
+								}
+							}
+							{...colour}
+						/>
+					)
+				})}
+			</div>
 		</div>
 	);
 }
 
-ReactDOM.render(<App />, document.querySelector(".container"));
+ReactDOM.render(<App />, document.querySelector(".react_container"));
