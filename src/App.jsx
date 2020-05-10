@@ -64,54 +64,54 @@ const App = () => {
 			<Router>
 				<Switch>
 					<Route exact path="/">
-						{/* <div className="container_bg" style={{ 'backgroundColor': theme.background, 'color': theme.foreground }}> */}
+						<div className="container_bg" style={{ 'backgroundColor': theme.background, 'color': theme.foreground }}>
 
-						<ColourForm addColour={(colour) => { dispatch({ 'type': 'addColour', 'colour': colour }) }}>
-							<h1>Colour Picker!</h1>
-							<label htmlFor="theme">Theme:</label>
-							<br />
-							<br />
-							<select value={(theme == themes.dark) ? "dark" : "light"} onChange={(e) => {
-								if (e.target.value == "dark") {
-									setTheme(themes.dark)
-								} else {
-									setTheme(themes.light)
-								}
-							}}>
-								<option value="dark">Dark Theme</option>
-								<option value="light">Light Theme</option>
-							</select>
-							<p>Choose a Colour, add it to the list, remove it if you like. Just have fun!</p>
-							<Link to="/about">About this project</Link>
-							<br />
-							<div className="average_colour" style={{
-								'backgroundColor': 'rgb(' + average.red + ',' + average.green + ',' + average.blue + ')',
-								'color': ((average.red * 0.299 + average.green * 0.587 + average.blue * 0.114) > 186) ? 'black' : 'white'
-							}}>Average Colour (Red: {average.red}, Green: {average.green}, Blue: {average.blue}</div>
-							<br />
-							<br />
-						</ColourForm>
-						<div className="container">
-							{state.map((colour) => {
-								return (
-									<Colour
-										key={
-											colour.red.toString() +
-											colour.blue.toString() +
-											colour.green.toString()
-										}
-										removeColour={
-											() => {
-												dispatch({ 'type': 'removeColour', 'colour': colour })
+							<ColourForm addColour={(colour) => { dispatch({ 'type': 'addColour', 'colour': colour }) }}>
+								<h1>Colour Picker!</h1>
+								<label htmlFor="theme">Theme:</label>
+								<br />
+								<br />
+								<select value={(theme == themes.dark) ? "dark" : "light"} onChange={(e) => {
+									if (e.target.value == "dark") {
+										setTheme(themes.dark)
+									} else {
+										setTheme(themes.light)
+									}
+								}}>
+									<option value="dark">Dark Theme</option>
+									<option value="light">Light Theme</option>
+								</select>
+								<p>Choose a Colour, add it to the list, remove it if you like. Just have fun!</p>
+								<Link to="/about">About this project</Link>
+								<br />
+								<div className="average_colour" style={{
+									'backgroundColor': 'rgb(' + average.red + ',' + average.green + ',' + average.blue + ')',
+									'color': ((average.red * 0.299 + average.green * 0.587 + average.blue * 0.114) > 186) ? 'black' : 'white'
+								}}>Average Colour (Red: {average.red}, Green: {average.green}, Blue: {average.blue}</div>
+								<br />
+								<br />
+							</ColourForm>
+							<div className="container">
+								{state.map((colour) => {
+									return (
+										<Colour
+											key={
+												colour.red.toString() +
+												colour.blue.toString() +
+												colour.green.toString()
 											}
-										}
-										{...colour}
-									/>
-								)
-							})}
-						</div>
+											removeColour={
+												() => {
+													dispatch({ 'type': 'removeColour', 'colour': colour })
+												}
+											}
+											{...colour}
+										/>
+									)
+								})}
+							</div>
 
-						{/* </div> */}
+						</div>
 					</Route>
 					<Route exact path="/about">
 						<About />
