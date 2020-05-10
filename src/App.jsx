@@ -39,7 +39,21 @@ const App = () => {
 
 	const [state, dispatch] = useReducer(reducer, []);
 	const [average, setAverage] = useState({ 'red': 128, 'green': 128, 'blue': 128, 'name': 'Average Colour' });
+	const [time, setTime] = useState(0);
 	const [theme, setTheme] = useState(themes.dark);
+
+	useEffect(() => {
+		let timeCopy = time;
+
+		let userTimer = setInterval(() => {
+			setTime(timeCopy++);
+		}, 1000)
+
+		return () => {
+			clearInterval(userTimer);
+		}
+
+	}, [])
 
 	useEffect(() => {
 		let stateCopy = state.map((c) => (c));
@@ -87,7 +101,7 @@ const App = () => {
 								<div className="average_colour" style={{
 									'backgroundColor': 'rgb(' + average.red + ',' + average.green + ',' + average.blue + ')',
 									'color': ((average.red * 0.299 + average.green * 0.587 + average.blue * 0.114) > 186) ? 'black' : 'white'
-								}}>Average Colour (Red: {average.red}, Green: {average.green}, Blue: {average.blue}</div>
+								}}>Average Colour (Red: {average.red}, Green: {average.green}, Blue: {average.blue} | User has spend {time} seconds on site</div>
 								<br />
 								<br />
 							</ColourForm>
