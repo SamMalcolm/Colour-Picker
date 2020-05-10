@@ -101,7 +101,7 @@ const App = () => {
 								<div className="average_colour" style={{
 									'backgroundColor': 'rgb(' + average.red + ',' + average.green + ',' + average.blue + ')',
 									'color': ((average.red * 0.299 + average.green * 0.587 + average.blue * 0.114) > 186) ? 'black' : 'white'
-								}}>Average Colour (Red: {average.red}, Green: {average.green}, Blue: {average.blue} | User has spend {time} seconds on site</div>
+								}}>Average Colour (Red: {average.red}, Green: {average.green}, Blue: {average.blue} | User has spent {time} seconds on site</div>
 								<br />
 								<br />
 							</ColourForm>
